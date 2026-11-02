@@ -1,0 +1,4 @@
+# ModernBERT-base (149M, 8k): raw encoder, no retrieval pre-training.
+model:
+  name: answerdotai/ModernBERT-base
+  query_template: ""

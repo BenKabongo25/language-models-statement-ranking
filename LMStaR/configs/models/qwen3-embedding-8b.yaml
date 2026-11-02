@@ -1,0 +1,10 @@
+# Qwen3-Embedding-8B: decoder embedder, EOS pooling (36 layers, hidden 4096, 40k context).
+# Two bf16 towers = ~30 GB per GPU; memory is dominated by the query forward/backward (4096-token prompts),
+# hence gradient checkpointing on both towers. Per-GPU sizes below are for one H200 (141 GB).
+model:
+  name: Qwen/Qwen3-Embedding-8B
+  document_gradient_checkpointing: true
+training:
+  document_microbatch_size: 256
+  document_eval_batch_size: 1024
+  eval_batch_size: 64

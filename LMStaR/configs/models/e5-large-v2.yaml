@@ -1,0 +1,6 @@
+# E5-large-v2 (335M, 512 tokens): native mean pooling (variants/pooling_mean.yaml), "query: " / "passage: ".
+model:
+  name: intfloat/e5-large-v2
+  query_template: "query: "
+  document_prefix: "passage: "
+  query_max_length: 512

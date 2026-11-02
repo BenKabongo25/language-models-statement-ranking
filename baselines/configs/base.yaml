@@ -1,0 +1,37 @@
+dataset:
+  name: null
+  root: data/processed/{dataset}/statement_ranking
+  statement_type: match
+
+split:
+  strategy: user_leave_last_two
+  validation: penultimate
+  test: last
+  drop_cold_start_validation: true
+
+# Scientific invariant of this benchmark.
+sampling:
+  scope: item
+  # fit_only prevents statements seen only in validation/test from becoming train negatives.
+  # Set all only for a deliberate leakage ablation.
+  candidate_source: fit_only
+
+evaluation:
+  k: [5, 10]
+  score_batch_size: 1024
+  save_full_ranking: false
+
+runtime:
+  device: auto
+  deterministic: false
+
+selection:
+  enabled: false
+  metric: ndcg@5
+  grid: {}
+
+training:
+  num_negatives: 1
+
+output:
+  root: data/processed/{dataset}/baselines

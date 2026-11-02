@@ -1,0 +1,5 @@
+# Yelp (statement_ranking/final under dataset.root/Yelp)
+dataset:
+  name: Yelp
+training:
+  temperature: 0.1

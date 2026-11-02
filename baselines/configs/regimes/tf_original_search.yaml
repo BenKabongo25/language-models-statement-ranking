@@ -1,0 +1,11 @@
+# Hyperparameter ranges reported for CD/PITF/BPER in the BPER paper.
+# Use with --extra-config; BPER's mu search is separate below to avoid an irrelevant
+# parameter for CD/PITF.
+selection:
+  enabled: true
+  metric: ndcg@10
+  grid:
+    model.dimension: [10, 20, 30, 40, 50]
+    training.lr: [0.001, 0.01, 0.1]
+    training.weight_decay: [0.001, 0.01, 0.1]
+    training.epochs: [100, 500, 1000]

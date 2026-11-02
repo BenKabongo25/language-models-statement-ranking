@@ -1,0 +1,9 @@
+# Example SLURM profile: adapt partition / resources to your cluster.
+profile_name: a6000
+partition: gpu            # your cluster's partition
+nodelist: null            # optional node name
+gpus: 1
+cpus: 12
+memory: 64G
+time: "48:00:00"
+conda_env: statementrec

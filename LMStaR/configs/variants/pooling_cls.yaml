@@ -1,0 +1,2 @@
+# First-token state (native pooling of BERT-like embedders such as BGE, Arctic, GTE, BLaIR).
+model: {pooling: cls}

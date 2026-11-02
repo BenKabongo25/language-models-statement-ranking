@@ -1,0 +1,17 @@
+model:
+  name: bper_large
+  family: bper
+  dimension: 768
+  mu: 0.7
+  official_adam_ignores_weight_decay: true
+  bias_init: paper_popularity
+  provenance: SE-BPER paper BPER-large ablation
+training:
+  optimizer: adam
+  # Convergence experiment in SE-BPER: BPER-large/SE-BPER/SE-BPER+ share dim=768,
+  # lr=1e-3, L2=1e-4 and batch size 32.
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 50
+  batch_size: 32
+  num_negatives: 3

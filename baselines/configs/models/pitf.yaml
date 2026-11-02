@@ -1,0 +1,12 @@
+model:
+  name: pitf
+  family: tensor_factorization
+  dimension: 20
+  provenance: "PITF explanation-ranking baseline as used in the BPER paper: score U-E + I-E and the same explanation BPR objective as CD. Default uses the controlled TF setting d=20, lambda=0.01, lr=0.01, T=500."
+training:
+  optimizer: sgd
+  lr: 0.01
+  weight_decay: 0.01
+  epochs: 500
+  batch_size: 1024
+  num_negatives: 1

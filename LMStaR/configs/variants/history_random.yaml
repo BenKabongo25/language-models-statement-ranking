@@ -1,0 +1,2 @@
+# Random subset and order of the history, 3 training views (re-drawn per epoch).
+history: {order: random, packing: skip, views: 3}

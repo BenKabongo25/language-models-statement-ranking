@@ -1,0 +1,72 @@
+# LMStaR -- complete default configuration (identical to lmstar.config.DEFAULTS).
+# Compose: base.yaml + models/<m>.yaml + datasets/<d>.yaml [+ hardware/..] [+ variants/..] [+ init/..] [--set K=V]
+seed: 40
+
+dataset:
+  name: null                          # set by datasets/<d>.yaml: Beauty | Toys | Sports | Yelp
+  root: ../data/processed
+  final_subdir: statement_ranking/final
+
+model:                                # backbone of BOTH towers (independent copies + independent LoRA)
+  name: Qwen/Qwen3-Embedding-0.6B
+  pooling: eos                        # eos (last non-padding token) | mean | cls (first token)
+  append_eos: auto                    # auto: append EOS when the tokenizer adds no trailing special token | false
+  padding_side: right                 # right (exact for causal and bidirectional models) | left
+  query_template: "Instruct: {instruction}\nQuery: "   # prefix of the query prompt ({instruction} optional)
+  document_prefix: ""                 # prefix of every statement (e.g. "passage: ")
+  instruction: "Retrieve explanation statements matching the target item to the user's preferences based on previous interactions."
+  query_max_length: 4096              # history + target-item prompt, packed token-exactly
+  document_max_length: 256
+  use_lora: true                     # false: full fine-tuning (configs/variants/full_finetuning.yaml)
+  towers: independent                # shared (variants/shared_tower.yaml) | query_only (variants/query_only.yaml)
+  lora: {r: 16, alpha: 32, dropout: 0.0, target_modules: auto}   # auto: attention projections of the architecture
+  attention: sdpa                     # sdpa | eager | flash_attention_2 (falls back to eager if unsupported)
+  dtype: bfloat16                    # weights (float32 for full fine-tuning)
+  autocast: null                     # null | bfloat16: mixed-precision forward
+  trust_remote_code: false
+  query_gradient_checkpointing: true
+  document_gradient_checkpointing: false
+
+history:
+  max_statements_per_interaction: null  # null = all statements of a past interaction
+  order: recency                      # recency | chronological | random | random_selected
+  packing: stop                       # stop (newest first until the budget is full) | skip
+  views: 1                            # training views of random orders (re-drawn per view)
+  seed: null                          # seed of random orders (null -> run seed)
+  target_position: last               # last | first (target item before the history)
+
+training:
+  epochs: 10
+  batch_size: 128                     # GLOBAL physical batch (split over GPUs)
+  gradient_accumulation_steps: 2
+  bucket_size: 1024
+  document_microbatch_size: 256       # per GPU
+  document_eval_batch_size: 512       # per GPU
+  eval_batch_size: 128                # per GPU
+  num_negatives: 32
+  temperature: 0.1
+  learning_rate_query: 1.0e-4
+  learning_rate_document: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  max_grad_norm: 1.0
+  eval_steps: 50
+  log_steps: 10
+  early_stopping_patience: 5
+  loss: infonce
+  negative_sampling: {strategy: uniform, userpop_ratio: 0.25, hard_pool_multiplier: 3}  # uniform | uniform_userpop
+  init: scratch                       # scratch | checkpoint (init/from_checkpoint.yaml)
+  init_checkpoint: null               # <run>/best (or <run>) when init=checkpoint
+
+evaluation:
+  cutoffs: [5, 10]
+  metric_scale: 100.0
+  selection_metric: ndcg@5
+  test_context: fit_plus_val          # fit_plus_val | fit_only
+
+output:
+  root: ../data/processed/LMStaR
+
+runtime:
+  gpus: 1
+  dist_timeout_minutes: 240

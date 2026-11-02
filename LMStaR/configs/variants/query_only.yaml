@@ -1,0 +1,5 @@
+# Ablation: only the query tower is fine-tuned; the statements are encoded by the frozen backbone (no LoRA, no
+# gradient, statement prompts unchanged). Measures how much LMStaR gains from adapting the statement space.
+# Checkpoint: best/query_lora (or best/query_model with configs/variants/full_finetuning.yaml).
+model:
+  towers: query_only

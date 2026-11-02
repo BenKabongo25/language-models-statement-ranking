@@ -1,0 +1,5 @@
+# Contriever fine-tuned on MS MARCO (passage retrieval, 110M, 512 tokens): native mean pooling.
+model:
+  name: facebook/contriever-msmarco
+  query_template: ""
+  query_max_length: 512

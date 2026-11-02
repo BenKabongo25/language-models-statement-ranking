@@ -1,0 +1,2 @@
+# Mean of the non-padding token states instead of the EOS state.
+model: {pooling: mean}

@@ -1,0 +1,9 @@
+# Ablation: ONE shared tower encodes the queries and the statements (Siamese bi-encoder), instead of two
+# independent towers. The statements get their own instruction, in the same "Instruct / role" format as the
+# query prompt, so that the shared tower knows which side of the asymmetric ranking task it encodes.
+# learning_rate_query is the rate of the
+# shared tower. Checkpoint: best/shared_lora (or best/shared_model with configs/variants/full_finetuning.yaml).
+# Without the statement instruction: --set model.document_prefix="''".
+model:
+  towers: shared
+  document_prefix: "Instruct: Represent this explanation statement for ranking by relevance to a user's preferences and a target item.\nStatement: "

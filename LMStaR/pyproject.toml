@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lmstar"
+version = "5.6.0"
+description = "LMStaR: Learning to Rank Explanations for Recommendation with Language Models"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.2", "transformers>=4.51", "peft>=0.13", "pyyaml>=6", "numpy>=1.24", "tqdm>=4.66",
+                "tensorboard>=2.14", "safetensors>=0.4"]
+
+[project.scripts]
+lmstar-train = "lmstar.train:main"
+lmstar-eval = "lmstar.evaluate:main"
+
+[tool.setuptools.packages.find]
+include = ["lmstar*"]

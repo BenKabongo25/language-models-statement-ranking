@@ -1,0 +1,2 @@
+# Target item written before the history (every history token attends to it).
+history: {target_position: first}

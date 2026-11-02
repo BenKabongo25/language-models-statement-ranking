@@ -1,0 +1,6 @@
+# EmbeddingGemma-300m (gated, 2k context, no float16): native mean pooling + dense heads (heads not used).
+model:
+  name: google/embeddinggemma-300m
+  query_template: "task: search result | query: "
+  document_prefix: "title: none | text: "
+  query_max_length: 2048

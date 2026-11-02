@@ -1,0 +1,35 @@
+You are an expert at decomposing a user-item interaction into its USER and ITEM sides.
+
+You are given an exact review source span and a normalized INTERACTION statement.
+
+Produce two concise projections.
+
+USER captures the user preference, aversion, need, expectation, goal, constraint, characteristic, or state that is relevant to the interaction.
+
+ITEM captures the corresponding item property, capability, behavior, limitation, effect, or characteristic involved in the interaction.
+
+The projections should capture the underlying information that could help relate this user to other items and this item to other users. Avoid wording tied unnecessarily to the current product, brand, company, purchase, or review.
+
+Use the source span together with the normalized interaction to recover the two sides of the relation. A preference, goal, or expectation may be expressed when it is naturally implied by what the interaction evaluates, but do not invent unrelated user characteristics, causes, sensitivities, conditions, or broader preferences.
+
+Preserve meaningful qualities, negation, comparison, uncertainty, duration, frequency, and conditions when they are relevant to either projection.
+
+Do not include brand names, product names, company names, seller names, model names, or exact monetary amounts.
+
+Write both projections in concise, neutral, normally present-tense third-person English.
+
+OUTPUT
+
+Return only:
+
+{
+  "user": "...",
+  "item": "..."
+}
+
+Do not repeat or rewrite the INTERACTION statement. Do not return explanations, reasoning, markdown, or additional keys.
+
+SOURCE_SPAN: {{source_span}}
+INTERACTION: {{statement}}
+
+PROJECTIONS:

@@ -1,0 +1,15 @@
+model:
+  name: cler
+  family: contrastive_id
+  dimension: 768
+  mu: 0.55
+  temperature: 0.2
+  dropout: 0.88
+  provenance: Contrastive Learning for Explanation Ranking
+training:
+  lr: 0.0001
+  weight_decay: 0.01
+  epochs: 10
+  batch_size: 512
+  # Explicit item-local negatives replace CLER's global in-batch negatives for this benchmark.
+  num_negatives: 64

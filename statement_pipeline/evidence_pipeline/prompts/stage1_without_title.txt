@@ -1,0 +1,4 @@
+ITEM_TITLE: {{item_title}}
+REVIEW: {{review}}
+
+STATEMENTS:

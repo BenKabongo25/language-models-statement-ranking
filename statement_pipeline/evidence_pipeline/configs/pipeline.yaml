@@ -1,0 +1,90 @@
+paths_config: configs/paths.yaml
+datasets_config: configs/datasets.yaml
+results_subdir: evidence_pipeline
+
+stages:
+  stage1:
+    prompt_revision: atomic-v1
+    batch_size: 48
+    retries: 1
+    max_review_chars_per_prompt: 10000
+    chunk_overlap_chars: 700
+    sampling:
+      structured_outputs: true
+      seed: 42
+      temperature: 0.0
+      top_p: 1.0
+      top_k: -1
+      max_tokens: 1536
+    recovery:
+      revision: failure-recovery-v1
+      thinking: true
+      thinking_token_budget: 768
+      batch_size: 32
+      retries: 2
+      sampling:
+        structured_outputs: true
+        seed: 314159
+        temperature: 0.45
+        top_p: 0.95
+        top_k: 20
+        max_tokens: 3072
+
+  stage2:
+    prompt_revision: projection-v1
+    batch_size: 128
+    retries: 1
+    sampling:
+      structured_outputs: true
+      seed: 42
+      temperature: 0.0
+      top_p: 1.0
+      top_k: -1
+      max_tokens: 320
+    recovery:
+      revision: failure-recovery-v1
+      thinking: true
+      thinking_token_budget: 384
+      batch_size: 96
+      retries: 2
+      sampling:
+        structured_outputs: true
+        seed: 314159
+        temperature: 0.35
+        top_p: 0.95
+        top_k: 20
+        max_tokens: 768
+
+  stage3:
+    prompt_revision: stance-v1
+    eligible_types:
+      - user
+      - interaction
+    batch_size: 256
+    retries: 1
+    sampling:
+      structured_outputs: true
+      seed: 42
+      temperature: 0.0
+      top_p: 1.0
+      top_k: -1
+      max_tokens: 64
+    recovery:
+      revision: failure-recovery-v1
+      thinking: true
+      thinking_token_budget: 128
+      batch_size: 192
+      retries: 2
+      sampling:
+        structured_outputs: true
+        seed: 314159
+        temperature: 0.25
+        top_p: 0.95
+        top_k: 20
+        max_tokens: 192
+
+compose:
+  slurm:
+    cpus: 2
+    memory: 8G
+    time: "12:00:00"

@@ -1,0 +1,4 @@
+# mE5-large-instruct (560M, 512 tokens): native mean pooling, instruction queries.
+model:
+  name: intfloat/multilingual-e5-large-instruct
+  query_max_length: 512

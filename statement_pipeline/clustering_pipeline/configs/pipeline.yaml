@@ -1,0 +1,128 @@
+types: [user, item, match]
+
+type_aliases:
+  user: user
+  item: item
+  match: match
+  interaction: match
+  external: external
+
+runtime:
+  device: auto                 # auto | cuda | cpu
+  fallback_to_cpu: true
+
+prepare:
+  only_status_ok: true
+
+embedding:
+  model: Qwen/Qwen3-Embedding-0.6B
+  revision: null
+  trust_remote_code: false
+  pooling: last
+  max_length: 256
+  normalize: true
+  truncate_dim: -1
+  output_dtype: float16
+
+  # Execution-only: changing these does NOT invalidate embeddings.
+  batch_size: 1024
+  dtype: auto
+  attn_implementation: auto
+  checkpoint_every_batches: 50
+
+neighbors:
+  k: 128
+  min_cosine: 0.80
+
+  # Execution-only: changing these does NOT invalidate candidate pairs.
+  backend: auto                # auto -> FAISS if available, else torch
+  index: flat                  # flat | hnsw
+  query_batch_size: 4096
+  output_query_span: 32768
+  add_batch_size: 65536
+  hnsw_m: 32
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 256
+  torch_corpus_block: 32768
+  torch_compute_dtype: auto
+  compress_shards: false
+
+reranker:
+  enabled: true
+  model: Qwen/Qwen3-Reranker-0.6B
+  revision: null
+  trust_remote_code: false
+  max_length: 512
+
+  # One semantic-equivalence threshold for USER / ITEM / MATCH.
+  # Raw scores are stored independently of this threshold.
+  threshold: 0.95
+
+  # Execution-only: changing these does NOT invalidate reranker scores.
+  batch_size: 512
+  dtype: auto
+  attn_implementation: auto
+  compress_shards: false
+  reuse_legacy_partial_shards: true
+
+  instructions:
+    user: >-
+      Decide whether the two statements express the same user preference, aversion,
+      need, expectation, goal, constraint, characteristic, or state. Answer yes only
+      for semantic equivalence. Preserve negation, conditions, quantities, intensity,
+      and direction; related but distinct statements are not equivalent.
+    item: >-
+      Decide whether the two statements express the same item property, capability,
+      behavior, limitation, effect, or characteristic. Answer yes only for semantic
+      equivalence. Preserve negation, conditions, quantities, intensity, and direction;
+      related but distinct statements are not equivalent.
+    match: >-
+      Decide whether the two statements express the same user-item relation, outcome,
+      fit, incompatibility, effect, success, or failure. Answer yes only for semantic
+      equivalence. Preserve negation, conditions, quantities, intensity, and direction;
+      related but distinct explanations are not equivalent.
+
+cluster:
+  algorithm: sentinel_frontier_agglomerative
+
+  # Cluster representation: embedding medoid, then farthest-first sentinels.
+  # With q=4, one merge proposal needs at most 16 cross-encoder judgments.
+  sentinels: 4
+
+  # Reuse an interrupted/new checkpoint or migrate the partition produced by
+  # the previous round-based sentinel implementation. Set false for a canonical
+  # fresh clustering from singleton statements.
+  resume_previous_state: true
+
+  # Execution-only. A wave verifies many (possibly overlapping) candidate
+  # cluster pairs together so missing sentinel scores fill large GPU batches.
+  # Passed overlaps are returned to a priority retry frontier after merges.
+  candidate_batch_size: 2048
+  verification_batch_size: 512
+  cache_flush_pairs: 100000
+  checkpoint_every_waves: 10
+  write_merge_trace: true
+
+  # Optional safety budgets. null means true frontier exhaustion. If a budget
+  # is reached, the stage checkpoints and stops without writing final clusters.
+  max_merge_attempts: null
+  max_new_reranker_pairs: null
+
+  include_members: true
+  include_cluster_stats: true
+
+pair_analysis:
+  enabled: true
+  capture_neighbor_ranks_during_neighbors: true
+  include_text: true
+  sample_per_category: 250
+  write_chunk_size: 100000
+  include_lazy_verification_pairs: true
+
+  # Rank handling for old runs without rank sidecars.
+  rank_mode: available         # available | recompute
+  rank_backend: auto
+  rank_query_batch_size: 4096
+
+finalize:
+  write_type_dictionaries: true

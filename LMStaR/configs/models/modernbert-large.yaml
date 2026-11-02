@@ -1,0 +1,4 @@
+# ModernBERT-large (395M, 8k): raw encoder.
+model:
+  name: answerdotai/ModernBERT-large
+  query_template: ""

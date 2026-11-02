@@ -1,0 +1,36 @@
+paths_config: configs/paths.yaml
+
+# Only FINAL upstream artifacts are consumed. No clustering/evidence intermediate
+# directory is referenced by this module.
+clustering_final_subdir: clustering_pipeline/final
+evidence_final_subdir: evidence_pipeline/final
+results_subdir: statement_ranking
+
+selection:
+  # The benchmark target is statement-level USER-ITEM matching, so an interaction
+  # must have at least one clustered MATCH statement before k-core filtering.
+  require_match_statements: true
+  missing_timestamp: error   # error | drop
+
+k_core:
+  # Iterative bipartite k-core over retained interactions. Degrees are recomputed
+  # until every retained user and item has at least k interactions.
+  k: 5
+
+split:
+  # Sort each user's retained interactions by (timestamp, interaction_id) and use
+  # the chronologically last interaction as the test interaction.
+  strategy: user_last
+  tie_breaker: interaction_id
+
+  # A held-out interaction whose item has no TRAIN occurrence is excluded from the
+  # benchmark. It is NOT moved back into train and the user's previous interaction
+  # is NOT promoted to test.
+  cold_start_items: drop_test
+
+output:
+  format: csv
+  id_list_separator: ":"
+  preserve_cluster_global_ids: true
+  # Original IDs are final evidence occurrence IDs, not deleted raw clustering IDs.
+  original_id_semantics: evidence_id

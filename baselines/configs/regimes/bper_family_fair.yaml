@@ -1,0 +1,11 @@
+# Controlled optimization regime for BPER/BPER-large/SE-BPER/SE-BPER+.
+# Use as an extra config after a model config when the goal is architecture-only comparison.
+training:
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 50
+  batch_size: 32
+  num_negatives: 3
+model:
+  mu: 0.7
+  official_adam_ignores_weight_decay: false

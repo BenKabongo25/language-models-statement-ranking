@@ -1,0 +1,2 @@
+# Newest first, skipping (instead of stopping at) entries that do not fit.
+history: {packing: skip}

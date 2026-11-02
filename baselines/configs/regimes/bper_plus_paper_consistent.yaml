@@ -1,0 +1,5 @@
+# Disable the public-code bias-broadcast quirk and use the equations as written in the paper.
+model:
+  official_legacy_bias_broadcast: false
+training:
+  weight_decay: 0.00001

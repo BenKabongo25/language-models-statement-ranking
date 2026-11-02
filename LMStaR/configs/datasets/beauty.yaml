@@ -1,0 +1,5 @@
+# Beauty (statement_ranking/final under dataset.root/Beauty)
+dataset:
+  name: Beauty
+training:
+  temperature: 0.1

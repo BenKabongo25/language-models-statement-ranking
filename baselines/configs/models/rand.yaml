@@ -1,0 +1,5 @@
+model:
+  name: rand
+  family: random
+  provenance: StaR/EXTRA random baseline
+training: {}

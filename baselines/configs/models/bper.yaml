@@ -1,0 +1,17 @@
+model:
+  name: bper
+  family: bper
+  dimension: 20
+  mu: 0.7
+  bias_init: paper_popularity
+  provenance: "BPER paper; reported tuned TF setting d=20, lambda=0.01, gamma=0.01, T=500; mu is dataset-dependent (0.7 on Amazon/Yelp, 0.5 on TripAdvisor)."
+training:
+  optimizer: sgd
+  lr: 0.01
+  weight_decay: 0.01
+  epochs: 500
+  # The original implementation is SGD-style over sampled triples.  This batch size
+  # is an execution/vectorization parameter in our PyTorch reimplementation, not a
+  # scientific change to the sampled BPR objective.
+  batch_size: 1024
+  num_negatives: 1

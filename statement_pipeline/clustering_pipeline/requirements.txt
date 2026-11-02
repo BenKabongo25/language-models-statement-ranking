@@ -1,0 +1,7 @@
+numpy>=1.26
+scipy>=1.11
+PyYAML>=6.0
+tqdm>=4.66
+torch>=2.2
+transformers>=4.51.0
+packaging>=23.0

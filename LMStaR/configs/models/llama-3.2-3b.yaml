@@ -1,0 +1,8 @@
+# Llama-3.2-3B (gated).
+model:
+  name: meta-llama/Llama-3.2-3B
+  document_gradient_checkpointing: true
+training:
+  document_microbatch_size: 64
+  document_eval_batch_size: 256
+  eval_batch_size: 32

@@ -1,0 +1,8 @@
+# One H200 (141 GB) per experiment. Same effective batch as the 128 x 2 runs (64 x 4 = 256 examples per optimizer
+# step, same sampling): only the physical batch per forward changes (backbones >= 1.5B, long prompts).
+runtime:
+  gpus: 1
+training:
+  batch_size: 64
+  gradient_accumulation_steps: 4
+  eval_batch_size: 64

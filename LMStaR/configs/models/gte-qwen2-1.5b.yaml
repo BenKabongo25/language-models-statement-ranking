@@ -1,0 +1,9 @@
+# gte-Qwen2-1.5B-instruct (Alibaba): bidirectional Qwen2 (remote code), EOS pooling, instruction queries.
+model:
+  name: Alibaba-NLP/gte-Qwen2-1.5B-instruct
+  trust_remote_code: true
+  document_gradient_checkpointing: true
+training:
+  document_microbatch_size: 64
+  document_eval_batch_size: 256
+  eval_batch_size: 32

@@ -1,0 +1,5 @@
+# BGE-large-en-v1.5 (335M, 512 tokens): native CLS pooling, query instruction prefix.
+model:
+  name: BAAI/bge-large-en-v1.5
+  query_template: "Represent this sentence for searching relevant passages: "
+  query_max_length: 512

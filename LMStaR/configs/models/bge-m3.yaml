@@ -1,0 +1,4 @@
+# BGE-M3 (XLM-R large, 568M, 8k context): native CLS pooling (variants/pooling_cls.yaml), no prefix.
+model:
+  name: BAAI/bge-m3
+  query_template: ""

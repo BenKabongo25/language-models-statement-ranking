@@ -1,0 +1,14 @@
+model:
+  name: expgcn
+  family: graph_multitask
+  dimension: 128
+  n_layers: 4
+  m_layers: 2
+  tag_weight: 1.0
+  provenance: official ExpGCN AmazonMTV.yaml + Overall.yaml
+training:
+  lr: 0.001
+  weight_decay: 0.000001
+  epochs: 500
+  batch_size: 16384
+  num_negatives: 20

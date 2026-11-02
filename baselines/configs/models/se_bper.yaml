@@ -1,0 +1,18 @@
+model:
+  name: se_bper
+  family: semantic_enhanced_bper
+  dimension: 768
+  mu: 0.7
+  semantic_scale: 0.01      # official code divides semantic weights by 100
+  bias_init_range: 0.01     # official code samples rationale biases U(-.01,.01)
+  official_adam_ignores_weight_decay: true
+  transformer: albert-base-v2
+  max_length: 128
+  encode_batch_size: 256
+  provenance: Learning to Rank Rationales for Explainable Recommendation
+training:
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 50
+  batch_size: 32
+  num_negatives: 3

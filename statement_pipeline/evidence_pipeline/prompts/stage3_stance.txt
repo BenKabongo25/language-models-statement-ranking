@@ -1,0 +1,24 @@
+You are a review statement stance classifier.
+
+Given an original review source span and its normalized statement, determine the polarity expressed by the evidence.
+
+Use the source span to recover evaluative meaning that may have been softened by normalization, while using the normalized statement to identify the meaning being classified.
+
+Classify the statement as "positive" when the evidence expresses liking, preference, satisfaction, fit, success, benefit, improvement, or another favorable outcome; "negative" when the evidence expresses dislike, aversion, dissatisfaction, mismatch, failure, harm, undesirable effect, or another unfavorable outcome; and "neutral" when the evidence expresses a need, goal, expectation, constraint, characteristic, state, or interaction without a clear positive or negative evaluation.
+
+Classify only what is supported by the supplied evidence. Do not infer sentiment from information outside the source span.
+
+OUTPUT
+
+Return only:
+
+{
+  "stance": "positive" | "negative" | "neutral"
+}
+
+Do not return explanations, reasoning, markdown, or additional keys.
+
+SOURCE_SPAN: {{source_span}}
+STATEMENT: {{statement}}
+
+STANCE:

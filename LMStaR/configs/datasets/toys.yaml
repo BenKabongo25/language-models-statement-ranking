@@ -1,0 +1,5 @@
+# Toys (statement_ranking/final under dataset.root/Toys)
+dataset:
+  name: Toys
+training:
+  temperature: 0.1

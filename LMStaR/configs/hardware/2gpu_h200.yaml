@@ -1,0 +1,8 @@
+# Two H200 (141 GB) per experiment, 7-8B backbones. Same effective batch as the 128 x 2 runs (64 x 4 = 256
+# examples per optimizer step, same sampling): 32 queries of up to 4096 tokens per GPU and forward. The
+# computation does not depend on the physical batch (no in-batch negatives, exact gradient cache).
+runtime:
+  gpus: 2
+training:
+  batch_size: 64
+  gradient_accumulation_steps: 4

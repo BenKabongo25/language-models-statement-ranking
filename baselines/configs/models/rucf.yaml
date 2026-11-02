@@ -1,0 +1,7 @@
+model:
+  name: rucf
+  family: neighborhood_cf
+  similarity: jaccard
+  neighbor_k: null   # null = all positive-similarity neighbors; optionally cap for speed.
+  provenance: On the Relationship between Explanation and Recommendation / EXTRA
+training: {}

@@ -1,0 +1,7 @@
+model:
+  name: ricf
+  family: neighborhood_cf
+  similarity: jaccard
+  neighbor_k: null
+  provenance: On the Relationship between Explanation and Recommendation / EXTRA
+training: {}

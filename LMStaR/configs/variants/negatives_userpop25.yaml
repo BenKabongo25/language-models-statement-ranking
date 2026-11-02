@@ -1,0 +1,3 @@
+# 25% of the negatives drawn among the statements the user wrote most often (UserPop), rest uniform.
+training:
+  negative_sampling: {strategy: uniform_userpop, userpop_ratio: 0.25, hard_pool_multiplier: 3}

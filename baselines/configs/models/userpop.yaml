@@ -1,0 +1,5 @@
+model:
+  name: userpop
+  family: popularity
+  provenance: Rank Don't Generate
+training: {}

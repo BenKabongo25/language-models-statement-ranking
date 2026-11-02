@@ -1,0 +1,3 @@
+# Qwen3-0.6B base LLM (same size as Qwen3-Embedding-0.6B): EOS appended by lmstar.
+model:
+  name: Qwen/Qwen3-0.6B

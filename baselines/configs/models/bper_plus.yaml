@@ -1,0 +1,16 @@
+model:
+  name: bper_plus
+  family: bper_semantic_multiplicative
+  dimension: 20
+  mu: 0.7
+  transformer: bert-base-uncased
+  max_length: 10
+  transformer_trainable: true
+  official_legacy_bias_broadcast: true
+  provenance: "Official BPER+ architecture: BERT [CLS] -> linear d projection -> element-wise multiplication with user/item explanation factors. Paper: d=20, batch=128, T=5, lambda=1e-5; tuned lr=1e-4 Amazon and 1e-5 TripAdvisor/Yelp."
+training:
+  lr: 0.00001
+  weight_decay: 0.0  # matches the public AdamW call; paper also reports lambda=1e-5
+  epochs: 5
+  batch_size: 128
+  num_negatives: 1

@@ -1,0 +1,2 @@
+# Original (v1.2) test protocol: the validation interaction is not part of the test context.
+evaluation: {test_context: fit_only}

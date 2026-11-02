@@ -1,0 +1,5 @@
+# Sports (statement_ranking/final under dataset.root/Sports)
+dataset:
+  name: Sports
+training:
+  temperature: 0.1

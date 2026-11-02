@@ -1,0 +1,8 @@
+# Phi-4-mini-instruct (3.8B): fused qkv_proj (LoRA targets detected automatically).
+model:
+  name: microsoft/Phi-4-mini-instruct
+  document_gradient_checkpointing: true
+training:
+  document_microbatch_size: 64
+  document_eval_batch_size: 256
+  eval_batch_size: 32

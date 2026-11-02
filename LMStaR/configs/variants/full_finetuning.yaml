@@ -1,0 +1,10 @@
+# Full fine-tuning of both towers (no LoRA): every weight is trained. Master weights in fp32, forward in bf16
+# (autocast); AdamW without weight decay on biases / norms; lr 2e-5 (usual for full fine-tuning of embedders,
+# 1e-4 is the LoRA rate). Checkpoints: best/query_model, best/statement_model (complete weights).
+model:
+  use_lora: false
+  dtype: float32
+  autocast: bfloat16
+training:
+  learning_rate_query: 2.0e-5
+  learning_rate_document: 2.0e-5

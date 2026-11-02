@@ -1,0 +1,5 @@
+# mxbai-embed-large-v1 (335M, 512 tokens): native CLS pooling, query instruction prefix.
+model:
+  name: mixedbread-ai/mxbai-embed-large-v1
+  query_template: "Represent this sentence for searching relevant passages: "
+  query_max_length: 512

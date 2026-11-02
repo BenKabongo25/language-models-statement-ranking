@@ -1,0 +1,4 @@
+# Paths are relative to statement_pipeline/ (where the commands are run); ${VAR} and ~ are expanded.
+# data_root: the original dataset files (see configs/datasets.yaml); processed_root: every generated file.
+data_root: ../data/raw
+processed_root: ../data/processed

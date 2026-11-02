@@ -1,0 +1,13 @@
+name: google/gemma-3-27b-it
+family: gemma3
+dtype: bfloat16
+tensor_parallel_size: 1
+gpu_memory_utilization: 0.90
+max_model_len: 4096
+max_num_seqs: 48
+trust_remote_code: true
+enable_prefix_caching: true
+enforce_eager: false
+download_dir: null
+requires_hf_token: true
+hf_token_env: HF_TOKEN

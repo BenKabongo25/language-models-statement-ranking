@@ -1,0 +1,22 @@
+datasets:
+  Beauty:
+    kind: amazon2014
+    reviews: AmazonReviews2014/Beauty/reviews_Beauty_5.json
+    items: AmazonReviews2014/Beauty/meta_Beauty.json
+    review_title: true
+    derive_user_metadata: true
+
+  Toys:
+    kind: amazon2014
+    reviews: AmazonReviews2014/Toys/reviews_Toys_and_Games_5.json
+    items: AmazonReviews2014/Toys/meta_Toys_and_Games.json
+    review_title: true
+    derive_user_metadata: true
+
+  Yelp:
+    kind: yelp2013
+    reviews: Yelp2013/review_Yelp.json
+    items: Yelp2013/meta_business_Yelp.json
+    users: Yelp2013/meta_user_Yelp.json
+    review_title: false
+    derive_user_metadata: false

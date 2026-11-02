@@ -1,0 +1,8 @@
+# Qwen3-1.7B LLM.
+model:
+  name: Qwen/Qwen3-1.7B
+  document_gradient_checkpointing: true
+training:
+  document_microbatch_size: 64
+  document_eval_batch_size: 256
+  eval_batch_size: 32

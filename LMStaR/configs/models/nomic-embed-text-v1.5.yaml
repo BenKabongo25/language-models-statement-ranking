@@ -1,0 +1,6 @@
+# Nomic-Embed-Text v1.5 (137M, remote code, 8k): native mean pooling, prefixed queries / documents.
+model:
+  name: nomic-ai/nomic-embed-text-v1.5
+  query_template: "search_query: "
+  document_prefix: "search_document: "
+  trust_remote_code: true

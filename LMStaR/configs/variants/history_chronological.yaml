@@ -1,0 +1,2 @@
+# Same history entries as recency packing, written oldest first.
+history: {order: chronological}

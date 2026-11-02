@@ -1,0 +1,4 @@
+# Initialise both LoRA adapters from a trained run (fresh optimizer), e.g. domain transfer: a model trained on
+# Beauty fine-tuned on Toys. Add --set training.init_checkpoint=<run>/best (same backbone and LoRA settings).
+training:
+  init: checkpoint

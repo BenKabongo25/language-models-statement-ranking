@@ -1,0 +1,2 @@
+# At most 3 statements per past interaction (more interactions fit in the budget).
+history: {max_statements_per_interaction: 3}

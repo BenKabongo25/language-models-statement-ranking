@@ -1,0 +1,4 @@
+# GTE-ModernBERT-base (149M, 8k context): native CLS pooling, no prefix.
+model:
+  name: Alibaba-NLP/gte-modernbert-base
+  query_template: ""

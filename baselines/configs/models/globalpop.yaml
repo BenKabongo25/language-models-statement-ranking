@@ -1,0 +1,5 @@
+model:
+  name: globalpop
+  family: popularity
+  provenance: Rank Don't Generate
+training: {}

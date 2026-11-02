@@ -1,0 +1,5 @@
+# BLaIR-RoBERTa-base (125M, Amazon Reviews 2023), 512 tokens.
+model:
+  name: hyp1231/blair-roberta-base
+  query_template: ""
+  query_max_length: 512

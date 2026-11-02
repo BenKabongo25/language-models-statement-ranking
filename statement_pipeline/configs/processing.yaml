@@ -1,0 +1,8 @@
+keep_only_referenced_metadata: true
+write_stats: true
+drop_empty_metadata_fields: true
+ensure_ascii: false
+
+# Amazon Reviews 2014 has no separate user metadata file in this collection.
+# When enabled for a dataset, meta_users.jsonl is derived from reviewerID/reviewerName.
+write_derived_user_metadata: true

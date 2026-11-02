@@ -1,0 +1,2 @@
+training:
+  negative_sampling: {strategy: uniform_userpop, userpop_ratio: 0.5, hard_pool_multiplier: 3}

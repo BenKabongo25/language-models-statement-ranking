@@ -1,0 +1,5 @@
+# BLaIR-RoBERTa-large (McAuley lab): contrastive on Amazon Reviews 2023 (reviews <-> item metadata), CLS pooling native, 512 tokens.
+model:
+  name: hyp1231/blair-roberta-large
+  query_template: ""
+  query_max_length: 512

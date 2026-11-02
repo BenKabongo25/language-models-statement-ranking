@@ -1,0 +1,5 @@
+# ModernBERT-Embed-base (Nomic, 149M, 8k): native mean pooling, "search_query: " / "search_document: ".
+model:
+  name: nomic-ai/modernbert-embed-base
+  query_template: "search_query: "
+  document_prefix: "search_document: "

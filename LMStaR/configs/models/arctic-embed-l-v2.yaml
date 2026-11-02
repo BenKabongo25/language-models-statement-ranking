@@ -1,0 +1,4 @@
+# Snowflake Arctic-Embed-L v2.0 (568M, XLM-R, 8k): native CLS pooling, "query: " prefix.
+model:
+  name: Snowflake/snowflake-arctic-embed-l-v2.0
+  query_template: "query: "

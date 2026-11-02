@@ -1,0 +1,12 @@
+model:
+  name: cd
+  family: tensor_factorization
+  dimension: 20
+  provenance: "BPER paper CD baseline. Paper searches d in {10,20,30,40,50}, lambda/lr in {1e-3,1e-2,1e-1}, T in {100,500,1000}. Default here uses the controlled TF setting d=20, lambda=0.01, lr=0.01, T=500."
+training:
+  optimizer: sgd
+  lr: 0.01
+  weight_decay: 0.01
+  epochs: 500
+  batch_size: 1024
+  num_negatives: 1

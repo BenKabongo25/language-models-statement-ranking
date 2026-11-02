@@ -1,0 +1,6 @@
+selection:
+  enabled: true
+  metric: ndcg@10
+  grid:
+    training.lr: [0.00001, 0.0001]
+    model.mu: [0.5, 0.6, 0.7, 0.8]

@@ -1,0 +1,5 @@
+selection:
+  enabled: true
+  metric: ndcg@10
+  grid:
+    model.mu: [0.5, 0.6, 0.7, 0.8]

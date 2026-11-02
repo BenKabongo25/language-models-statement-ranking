@@ -1,0 +1,2 @@
+# Same entries as recency packing, random order, 3 training views.
+history: {order: random_selected, packing: stop, views: 3}
